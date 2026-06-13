@@ -3,12 +3,8 @@ export default async function handler(req, res) {
 
   const { imageUrl, caption } = req.body;
 
-  const IG_ACCESS_TOKEN = process.env.IG_ACCESS_TOKEN;
-  const IG_USER_ID = process.env.IG_USER_ID;
-
-  if (!IG_ACCESS_TOKEN || !IG_USER_ID) {
-    return res.status(500).json({ error: 'Instagram credentials not configured in environment variables.' });
-  }
+  const IG_ACCESS_TOKEN = process.env.IG_ACCESS_TOKEN || 'IGAAjpNI7zmrpBZAGJUNVp0RTBRQnhaTVJVVlRsYmlUZAWV4VnVOM2R2ZAGZAPMzJYV2NTYlJ1UlgtV1llRnZA5cWhzS2hCVC1NV09lX1U1QXpVdFdYMEpyaUw0MG10aC1aSkxId2s1V3lrRmQ1a0NMNEVMZAnd1XzJzNDFxWXZAWSU9fWQZDZD';
+  const IG_USER_ID = process.env.IG_USER_ID || '17841478728662408';
 
   if (!imageUrl || !caption) {
     return res.status(400).json({ error: 'imageUrl and caption are required' });
@@ -41,10 +37,10 @@ export default async function handler(req, res) {
 
     const creationId = containerData.id;
 
-    // Step 2: Wait a moment then publish
+    // Step 2: Wait then publish
     await new Promise((r) => setTimeout(r, 3000));
 
-    // Step 3: Publish the container
+    // Step 3: Publish
     const publishRes = await fetch(
       `https://graph.instagram.com/v21.0/${IG_USER_ID}/media_publish`,
       {
