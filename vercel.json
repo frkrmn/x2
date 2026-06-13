@@ -1,0 +1,9 @@
+{
+  "version": 2,
+  "framework": "nextjs",
+  "env": {
+    "IG_ACCESS_TOKEN": "@ig_access_token",
+    "IG_USER_ID": "@ig_user_id",
+    "IMGBB_API_KEY": "@imgbb_api_key"
+  }
+}
